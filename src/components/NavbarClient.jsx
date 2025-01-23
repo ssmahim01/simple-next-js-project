@@ -1,7 +1,9 @@
 "use client";
 import Link from "next/link";
 
-const NavbarClient = ({ isAuthenticated }) => {
+const NavbarClient = ({ isAuthenticated, user }) => {
+  // console.log(user.picture);
+
   const routes = (
     <>
       <Link href="/">Home</Link>
@@ -52,12 +54,20 @@ const NavbarClient = ({ isAuthenticated }) => {
             Login
           </Link>
         ) : (
-          <Link
+         <div className="flex gap-2 items-center">
+          <img src={user?.picture}
+           className="w-12 h-12 border-4 border-amber-400 rounded-full"
+           alt="Profile picture of user"
+           referrerPolicy="no-referrer"
+           />
+
+           <Link
           href="/api/auth/logout"
             className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6"
           >
             Log Out
           </Link>
+         </div>
         )}
       </div>
     </div>
