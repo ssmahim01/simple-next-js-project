@@ -2,7 +2,11 @@
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import { BsPersonCircle } from "react-icons/bs";
-import { LoginLink, LogoutLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import {
+  LoginLink,
+  LogoutLink,
+  RegisterLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 
 const NavbarClient = ({ isAuthenticated, user }) => {
   // console.log(user.picture);
@@ -65,14 +69,14 @@ const NavbarClient = ({ isAuthenticated, user }) => {
           {!isAuthenticated ? (
             <div className="flex gap-2 items-center">
               <LoginLink
-                postLoginRedirectURL="https://simple-next-js-project-j8dp.vercel.app/"
+                postLoginRedirectURL={`${window.location.origin}/`}
                 className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6"
               >
                 Login
               </LoginLink>
 
               <RegisterLink
-                postLoginRedirectURL="https://simple-next-js-project-j8dp.vercel.app/"
+                postLoginRedirectURL={`${window.location.origin}/`}
                 className="btn bg-teal-600 border-none text-white font-bold btn-sm px-6"
               >
                 Register
@@ -88,7 +92,7 @@ const NavbarClient = ({ isAuthenticated, user }) => {
               />
 
               <LogoutLink
-                postLogoutRedirectURL="https://simple-next-js-project-j8dp.vercel.app/"
+                 postLogoutRedirectURL={`${window.location.origin}/`}
                 className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6"
               >
                 Log Out
