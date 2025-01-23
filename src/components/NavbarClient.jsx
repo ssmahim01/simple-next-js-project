@@ -2,14 +2,29 @@
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import { BsPersonCircle } from "react-icons/bs";
+import {
+  LoginLink,
+  LogoutLink,
+  RegisterLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 
 const NavbarClient = ({ isAuthenticated, user }) => {
   // console.log(user.picture);
 
   const routes = (
     <>
-      <Link className="border border-gray-300 hover:bg-neutral hover:text-white rounded-md px-3 py-1 flex gap-2 items-center" href="/"><FaHome className="text-xl" /> <span>Home</span></Link>
-      <Link className="border border-gray-300 hover:bg-neutral hover:text-white rounded-md px-3 py-1 flex gap-2 items-center" href="/profile"><BsPersonCircle className="text-xl" /> <span>Profile</span></Link>
+      <Link
+        className="border border-gray-300 hover:bg-neutral hover:text-white rounded-md px-3 py-1 flex gap-2 items-center"
+        href="/"
+      >
+        <FaHome className="text-xl" /> <span>Home</span>
+      </Link>
+      <Link
+        className="border border-gray-300 hover:bg-neutral hover:text-white rounded-md px-3 py-1 flex gap-2 items-center"
+        href="/profile"
+      >
+        <BsPersonCircle className="text-xl" /> <span>Profile</span>
+      </Link>
     </>
   );
 
@@ -40,39 +55,51 @@ const NavbarClient = ({ isAuthenticated, user }) => {
             {routes}
           </ul>
         </div>
-        <a className="btn btn-ghost lg:text-3xl text-xl lg:pb-0 pb-1 font-bold">My Blogs</a>
+        <a className="btn btn-ghost lg:text-3xl text-xl lg:pb-0 pb-1 font-bold">
+          My Blogs
+        </a>
       </div>
       <div className="navbar-end">
-      <div className="hidden lg:flex">
-        <ul className="menu menu-horizontal *:text-base gap-3 mr-3 *:text-gray-800 *:font-bold px-1">
-          {routes}
-        </ul>
-      </div>
-      <div className="flex gap-3 items-center">
-        {!isAuthenticated ? (
-          <Link
-          href="/api/auth/login"
-            className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6"
-          >
-            Login
-          </Link>
-        ) : (
-         <div className="flex gap-2 items-center">
-          <img src={user?.picture}
-           className="w-12 h-12 border-4 border-amber-400 rounded-full"
-           alt="Profile picture of user"
-           referrerPolicy="no-referrer"
-           />
+        <div className="hidden lg:flex">
+          <ul className="menu menu-horizontal *:text-base gap-3 mr-3 *:text-gray-800 *:font-bold px-1">
+            {routes}
+          </ul>
+        </div>
+        <div className="flex gap-3 items-center">
+          {!isAuthenticated ? (
+            <div className="flex gap-2 items-center">
+              <LoginLink
+                postLoginRedirectURL={`${window.location.origin}/`}
+                className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6"
+              >
+                Login
+              </LoginLink>
 
-           <Link
-          href="/api/auth/logout"
-            className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6"
-          >
-            Log Out
-          </Link>
-         </div>
-        )}
-      </div>
+              <RegisterLink
+                postLoginRedirectURL={`${window.location.origin}/`}
+                className="btn bg-teal-600 border-none text-white font-bold btn-sm px-6"
+              >
+                Register
+              </RegisterLink>
+            </div>
+          ) : (
+            <div className="flex gap-2 items-center">
+              <img
+                src={user?.picture}
+                className="w-12 h-12 border-4 border-amber-400 rounded-full"
+                alt="Profile picture of user"
+                referrerPolicy="no-referrer"
+              />
+
+              <LogoutLink
+                 postLogoutRedirectURL={`${window.location.origin}/`}
+                className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6"
+              >
+                Log Out
+              </LogoutLink>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
