@@ -1,18 +1,20 @@
 "use client";
 import Link from "next/link";
+import { FaHome } from "react-icons/fa";
+import { BsPersonCircle } from "react-icons/bs";
 
 const NavbarClient = ({ isAuthenticated, user }) => {
   // console.log(user.picture);
 
   const routes = (
     <>
-      <Link href="/">Home</Link>
-      <Link href="/profile">Profile</Link>
+      <Link className="border border-gray-300 hover:bg-neutral hover:text-white rounded-md px-3 py-1 flex gap-2 items-center" href="/"><FaHome className="text-xl" /> <span>Home</span></Link>
+      <Link className="border border-gray-300 hover:bg-neutral hover:text-white rounded-md px-3 py-1 flex gap-2 items-center" href="/profile"><BsPersonCircle className="text-xl" /> <span>Profile</span></Link>
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 fixed shadow-md md:px-12 px-6">
+    <div className="navbar py-2 bg-slate-50 fixed shadow-md lg:px-12 md:px-6 px-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -38,9 +40,10 @@ const NavbarClient = ({ isAuthenticated, user }) => {
             {routes}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl font-bold">My Blogs</a>
+        <a className="btn btn-ghost lg:text-3xl text-xl lg:pb-0 pb-1 font-bold">My Blogs</a>
       </div>
-      <div className="navbar-end hidden lg:flex">
+      <div className="navbar-end">
+      <div className="hidden lg:flex">
         <ul className="menu menu-horizontal *:text-base gap-3 mr-3 *:text-gray-800 *:font-bold px-1">
           {routes}
         </ul>
@@ -69,6 +72,7 @@ const NavbarClient = ({ isAuthenticated, user }) => {
           </Link>
          </div>
         )}
+      </div>
       </div>
     </div>
   );
