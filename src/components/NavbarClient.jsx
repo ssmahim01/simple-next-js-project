@@ -2,11 +2,11 @@
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import { BsPersonCircle } from "react-icons/bs";
-// import {
-//   LoginLink,
-//   LogoutLink,
-//   RegisterLink,
-// } from "@kinde-oss/kinde-auth-nextjs/components";
+import {
+  LoginLink,
+  LogoutLink,
+  RegisterLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 
 const NavbarClient = ({ isAuthenticated, user }) => {
   // console.log(user.picture);
@@ -68,19 +68,19 @@ const NavbarClient = ({ isAuthenticated, user }) => {
         <div className="flex gap-3 items-center">
           {!isAuthenticated ? (
             <div className="flex gap-2 items-center">
-              <Link
-              href="/api/auth/login"
+              <LoginLink
+                postLoginRedirectURL="/login"
                 className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6"
               >
                 Login
-              </Link>
+              </LoginLink>
 
-              <Link
-              href="/api/auth/register"
+              <RegisterLink
+                postLoginRedirectURL="/profile"
                 className="btn bg-teal-600 border-none text-white font-bold btn-sm px-6"
               >
                 Register
-              </Link>
+              </RegisterLink>
             </div>
           ) : (
             <div className="flex gap-2 items-center">
@@ -91,12 +91,12 @@ const NavbarClient = ({ isAuthenticated, user }) => {
                 referrerPolicy="no-referrer"
               />
 
-              <Link
-              href="/api/auth/logout"
+              <LogoutLink
+                 postLogoutRedirectURL="/profile"
                 className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6"
               >
                 Log Out
-              </Link>
+              </LogoutLink>
             </div>
           )}
         </div>
