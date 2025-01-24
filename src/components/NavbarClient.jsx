@@ -2,14 +2,18 @@
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import { BsPersonCircle } from "react-icons/bs";
-import {
-  LoginLink,
-  LogoutLink,
-  RegisterLink,
-} from "@kinde-oss/kinde-auth-nextjs/components";
 
 const NavbarClient = ({ isAuthenticated, user }) => {
   // console.log(user.picture);
+
+  const issuerUrl = process.env.KINDE_ISSUER_URL; // Base Kinde URL
+  const clientId = process.env.KINDE_CLIENT_ID; // Client ID
+  const redirectUri = process.env.KINDE_POST_LOGIN_REDIRECT_URL; // Post-login redirect URL
+  const postLogoutRedirect = process.env.KINDE_POST_LOGOUT_REDIRECT_URL; // Post-logout redirect URL
+
+  const loginUrl = `${issuerUrl}/oauth2/auth?client_id=${clientId}&response_type=code&scope=openid profile email&redirect_uri=${redirectUri}`;
+  const registerUrl = `${issuerUrl}/oauth2/register?client_id=${clientId}&response_type=code&scope=openid profile email&redirect_uri=${redirectUri}`;
+  const logoutUrl = `${issuerUrl}/logout?client_id=${clientId}&redirect_uri=${postLogoutRedirect}`;
 
   const routes = (
     <>
@@ -21,7 +25,7 @@ const NavbarClient = ({ isAuthenticated, user }) => {
       </Link>
       <Link
         className="border border-gray-300 hover:bg-neutral hover:text-white rounded-md px-3 py-1 flex gap-2 items-center"
-        href={`${user ? "/profile" : "/api/auth/login"}`}
+        href={isAuthenticated ? "/profile" : loginUrl}
       >
         <BsPersonCircle className="text-xl" /> <span>Profile</span>
       </Link>
@@ -68,17 +72,18 @@ const NavbarClient = ({ isAuthenticated, user }) => {
         <div className="flex gap-3 items-center">
           {!isAuthenticated ? (
             <div className="flex gap-2 items-center">
-              <Link href="https://simple-next-js-project-od1y.vercel.app/api/auth/login">
-                <button className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6">
-                  Login
-                </button>
-              </Link>
-
-              <Link href="https://simple-next-js-project-od1y.vercel.app/api/auth/register">
-                <button className="btn bg-teal-600 border-none text-white font-bold btn-sm px-6">
-                  Register
-                </button>
-              </Link>
+              <button
+                onClick={() => (window.location.href = loginUrl)}
+                className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6"
+              >
+                Login
+              </button>
+              <button
+                onClick={() => (window.location.href = registerUrl)}
+                className="btn bg-teal-600 border-none text-white font-bold btn-sm px-6"
+              >
+                Register
+              </button>
             </div>
           ) : (
             <div className="flex gap-2 items-center">
@@ -88,12 +93,12 @@ const NavbarClient = ({ isAuthenticated, user }) => {
                 alt="Profile picture of user"
                 referrerPolicy="no-referrer"
               />
-
-              <Link href="https://simple-next-js-project-od1y.vercel.app/api/auth/logout" prefetch={false}>
-                <button className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6">
-                  Log Out
-                </button>
-              </Link>
+              <button
+                onClick={() => (window.location.href = logoutUrl)}
+                className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6"
+              >
+                Log Out
+              </button>
             </div>
           )}
         </div>
