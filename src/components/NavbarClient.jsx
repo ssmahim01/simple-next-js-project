@@ -6,7 +6,7 @@ import {
   LoginLink,
   LogoutLink,
   RegisterLink,
-} from "@kinde-oss/kinde-auth-nextjs";
+} from "@kinde-oss/kinde-auth-nextjs/components";
 
 const NavbarClient = ({ isAuthenticated, user }) => {
   // console.log(user.picture);
@@ -68,18 +68,16 @@ const NavbarClient = ({ isAuthenticated, user }) => {
         <div className="flex gap-3 items-center">
           {!isAuthenticated ? (
             <div className="flex gap-2 items-center">
-              <LoginLink
-                postLoginRedirectURL="/profile"
-                className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6"
-              >
-                Login
+              <LoginLink>
+                <button className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6">
+                  Login
+                </button>
               </LoginLink>
 
-              <RegisterLink
-                postLoginRedirectURL="/profile"
-                className="btn bg-teal-600 border-none text-white font-bold btn-sm px-6"
-              >
-                Register
+              <RegisterLink>
+                <button className="btn bg-teal-600 border-none text-white font-bold btn-sm px-6">
+                  Register
+                </button>
               </RegisterLink>
             </div>
           ) : (
@@ -91,8 +89,10 @@ const NavbarClient = ({ isAuthenticated, user }) => {
                 referrerPolicy="no-referrer"
               />
 
-              <LogoutLink className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6">
-                Log Out
+              <LogoutLink>
+                <button className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6">
+                  Log Out
+                </button>
               </LogoutLink>
             </div>
           )}
