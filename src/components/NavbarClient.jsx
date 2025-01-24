@@ -2,18 +2,14 @@
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import { BsPersonCircle } from "react-icons/bs";
+import Login from "@/app/login/page";
+import Register from "@/app/register/page";
+import Logout from "@/app/logout/page";
 
 const NavbarClient = ({ isAuthenticated, user }) => {
   // console.log(user.picture);
 
   // const issuerUrl = process.env.KINDE_ISSUER_URL;
-  // const clientId = process.env.KINDE_CLIENT_ID;
-  // const redirectUri = process.env.KINDE_POST_LOGIN_REDIRECT_URL;
-  // const postLogoutRedirect = process.env.KINDE_POST_LOGOUT_REDIRECT_URL;
-
-  const loginUrl = `/api/auth/login`;
-  const registerUrl = `/api/auth/register`;
-  const logoutUrl = `/api/auth/logout`;
 
   const routes = (
     <>
@@ -25,7 +21,7 @@ const NavbarClient = ({ isAuthenticated, user }) => {
       </Link>
       <Link
         className="border border-gray-300 hover:bg-neutral hover:text-white rounded-md px-3 py-1 flex gap-2 items-center"
-        href={isAuthenticated ? "/profile" : loginUrl}
+        href={isAuthenticated ? "/profile" : "/login"}
       >
         <BsPersonCircle className="text-xl" /> <span>Profile</span>
       </Link>
@@ -72,21 +68,9 @@ const NavbarClient = ({ isAuthenticated, user }) => {
         <div className="flex gap-3 items-center">
           {!isAuthenticated ? (
             <div className="flex gap-2 items-center">
-              <Link href={loginUrl}>
-              <button
-                className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6"
-              >
-                Login
-              </button>
-              </Link>
+             <Login />
              
-             <Link href={registerUrl}>
-             <button
-                className="btn bg-teal-600 border-none text-white font-bold btn-sm px-6"
-              >
-                Register
-              </button>
-             </Link>
+             <Register />
             </div>
           ) : (
             <div className="flex gap-2 items-center">
@@ -96,13 +80,7 @@ const NavbarClient = ({ isAuthenticated, user }) => {
                 alt="Profile picture of user"
                 referrerPolicy="no-referrer"
               />
-             <Link href={logoutUrl}>
-             <button
-                className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6"
-              >
-                Log Out
-              </button>
-             </Link>
+            <Logout />
             </div>
           )}
         </div>

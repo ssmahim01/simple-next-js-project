@@ -15,5 +15,5 @@ export async function middleware(req) {
 
 // Protect Profile route
 export const config = {
-  matcher: ["/profile"],
+  matcher: ["/login", "register", "/profile"],
 };
