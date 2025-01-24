@@ -7,7 +7,7 @@ const Home = async() => {
 
   return (
     <div className="pb-12 md:px-12 px-6">
-      <h2 className="text-4xl font-extrabold text-center">All Posts</h2>
+      <h2 className="text-4xl font-extrabold text-center">Blog Posts</h2>
 
       <div className="grid md:grid-cols-2 grid-cols-1 gap-8 pt-7">
         {postData.map((data) => (

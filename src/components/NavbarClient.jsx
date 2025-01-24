@@ -56,7 +56,7 @@ const NavbarClient = ({ user }) => {
           </ul>
         </div>
         <a className="btn btn-ghost lg:text-3xl text-xl lg:pb-0 pb-1 font-bold">
-          SS Mahim
+          Blogs View
         </a>
       </div>
       <div className="navbar-end">

@@ -12,7 +12,7 @@ const Footer = () => {
           src="next.svg"
           alt="Logo of Next JS"
         /> */}
-        <h2 className="text-2xl text-gray-900 font-bold">SS Mahim</h2>
+        <h2 className="text-2xl text-gray-900 font-bold">Blogs View</h2>
       </div>
 
       <div className="divider md:py-4 py-2"></div>
@@ -20,7 +20,7 @@ const Footer = () => {
       <div className="flex flex-wrap md:gap-0 gap-5 md:justify-between justify-center items-center px-4">
         <p className="font-semibold md:text-left text-center">
           Copyright © {new Date().getFullYear()} - All right reserved <br />{" "}
-          <span className="font-bold">by My Blogs</span>
+          <span className="font-bold">by Blogs View</span>
         </p>
 
         <nav className="flex gap-3 items-center">
