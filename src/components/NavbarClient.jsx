@@ -69,14 +69,12 @@ const NavbarClient = ({ isAuthenticated, user }) => {
           {!isAuthenticated ? (
             <div className="flex gap-2 items-center">
               <LoginLink
-                postLoginRedirectURL="/profile"
                 className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6"
               >
                 Login
               </LoginLink>
 
               <RegisterLink
-                postLoginRedirectURL="/profile"
                 className="btn bg-teal-600 border-none text-white font-bold btn-sm px-6"
               >
                 Register
@@ -92,7 +90,6 @@ const NavbarClient = ({ isAuthenticated, user }) => {
               />
 
               <LogoutLink
-                 postLogoutRedirectURL="/"
                 className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6"
               >
                 Log Out
