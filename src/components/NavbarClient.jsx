@@ -68,17 +68,17 @@ const NavbarClient = ({ isAuthenticated, user }) => {
         <div className="flex gap-3 items-center">
           {!isAuthenticated ? (
             <div className="flex gap-2 items-center">
-              <LoginLink>
+              <Link href="https://simple-next-js-project-od1y.vercel.app/api/auth/login">
                 <button className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6">
                   Login
                 </button>
-              </LoginLink>
+              </Link>
 
-              <RegisterLink>
+              <Link href="https://simple-next-js-project-od1y.vercel.app/api/auth/register">
                 <button className="btn bg-teal-600 border-none text-white font-bold btn-sm px-6">
                   Register
                 </button>
-              </RegisterLink>
+              </Link>
             </div>
           ) : (
             <div className="flex gap-2 items-center">
@@ -89,11 +89,11 @@ const NavbarClient = ({ isAuthenticated, user }) => {
                 referrerPolicy="no-referrer"
               />
 
-              <LogoutLink>
+              <Link href="https://simple-next-js-project-od1y.vercel.app/api/auth/logout" prefetch={false}>
                 <button className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6">
                   Log Out
                 </button>
-              </LogoutLink>
+              </Link>
             </div>
           )}
         </div>
