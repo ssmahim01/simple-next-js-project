@@ -92,7 +92,6 @@ const NavbarClient = ({ isAuthenticated, user }) => {
               />
 
               <LogoutLink
-              postLogoutRedirectURL="/"
                 className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6"
               >
                 Log Out
