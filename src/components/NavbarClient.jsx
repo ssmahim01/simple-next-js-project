@@ -6,14 +6,14 @@ import { BsPersonCircle } from "react-icons/bs";
 const NavbarClient = ({ isAuthenticated, user }) => {
   // console.log(user.picture);
 
-  const issuerUrl = process.env.KINDE_ISSUER_URL; // Base Kinde URL
-  const clientId = process.env.KINDE_CLIENT_ID; // Client ID
-  const redirectUri = process.env.KINDE_POST_LOGIN_REDIRECT_URL; // Post-login redirect URL
-  const postLogoutRedirect = process.env.KINDE_POST_LOGOUT_REDIRECT_URL; // Post-logout redirect URL
+  // const issuerUrl = process.env.KINDE_ISSUER_URL;
+  // const clientId = process.env.KINDE_CLIENT_ID;
+  // const redirectUri = process.env.KINDE_POST_LOGIN_REDIRECT_URL;
+  // const postLogoutRedirect = process.env.KINDE_POST_LOGOUT_REDIRECT_URL;
 
-  const loginUrl = `${issuerUrl}/oauth2/auth?client_id=${clientId}&response_type=code&scope=openid profile email&redirect_uri=${redirectUri}`;
-  const registerUrl = `${issuerUrl}/oauth2/register?client_id=${clientId}&response_type=code&scope=openid profile email&redirect_uri=${redirectUri}`;
-  const logoutUrl = `${issuerUrl}/logout?client_id=${clientId}&redirect_uri=${postLogoutRedirect}`;
+  const loginUrl = `/api/auth/login`;
+  const registerUrl = `/api/auth/register`;
+  const logoutUrl = `/api/auth/logout`;
 
   const routes = (
     <>
@@ -72,18 +72,21 @@ const NavbarClient = ({ isAuthenticated, user }) => {
         <div className="flex gap-3 items-center">
           {!isAuthenticated ? (
             <div className="flex gap-2 items-center">
+              <Link href={loginUrl}>
               <button
-                onClick={() => (window.location.href = loginUrl)}
                 className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6"
               >
                 Login
               </button>
-              <button
-                onClick={() => (window.location.href = registerUrl)}
+              </Link>
+             
+             <Link href={registerUrl}>
+             <button
                 className="btn bg-teal-600 border-none text-white font-bold btn-sm px-6"
               >
                 Register
               </button>
+             </Link>
             </div>
           ) : (
             <div className="flex gap-2 items-center">
@@ -93,12 +96,13 @@ const NavbarClient = ({ isAuthenticated, user }) => {
                 alt="Profile picture of user"
                 referrerPolicy="no-referrer"
               />
-              <button
-                onClick={() => (window.location.href = logoutUrl)}
+             <Link href={logoutUrl}>
+             <button
                 className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6"
               >
                 Log Out
               </button>
+             </Link>
             </div>
           )}
         </div>
