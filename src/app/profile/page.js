@@ -17,13 +17,13 @@ const Profile = async () => {
             {isAuthenticated ? <>
                 <h2 className="text-2xl text-gray-800 font-bold">Welcome to your profile!</h2>
 
-                <div className="space-y-4 my-4">
+                <div className="space-y-4 my-4 shadow-lg rounded-box bg-base-100 p-4 border border-gray-200">
                     <figure className="mx-auto w-44 h-44">
-                    <img src={profilePicture}
-                        className="w-full h-full shadow-lg border-8 border-emerald-500 rounded-full"
-                        alt="Profile picture of user"
-                        referrerPolicy="no-referrer"
-                    />
+                        <img src={profilePicture}
+                            className="w-full h-full shadow-lg border-8 border-emerald-500 rounded-full"
+                            alt="Profile picture of user"
+                            referrerPolicy="no-referrer"
+                        />
                     </figure>
 
                     <p className="pt-4 flex gap-x-2 items-center text-gray-700 text-lg font-bold">

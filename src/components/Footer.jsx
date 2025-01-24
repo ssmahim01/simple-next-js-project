@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { ImGithub, ImYoutube } from "react-icons/im";
@@ -13,7 +12,7 @@ const Footer = () => {
           src="next.svg"
           alt="Logo of Next JS"
         /> */}
-        <h2 className="text-2xl text-gray-900 font-bold">My Blogs</h2>
+        <h2 className="text-2xl text-gray-900 font-bold">SS Mahim</h2>
       </div>
 
       <div className="divider md:py-4 py-2"></div>

@@ -15,13 +15,13 @@ const NavbarClient = ({ isAuthenticated, user }) => {
     <>
       <Link
         className="border border-gray-300 hover:bg-neutral hover:text-white rounded-md px-3 py-1 flex gap-2 items-center"
-        href="/"
+        href={"/"}
       >
         <FaHome className="text-xl" /> <span>Home</span>
       </Link>
       <Link
         className="border border-gray-300 hover:bg-neutral hover:text-white rounded-md px-3 py-1 flex gap-2 items-center"
-        href="/profile"
+        href={`${user ? "/profile" : "/api/auth/login"}`}
       >
         <BsPersonCircle className="text-xl" /> <span>Profile</span>
       </Link>
@@ -56,7 +56,7 @@ const NavbarClient = ({ isAuthenticated, user }) => {
           </ul>
         </div>
         <a className="btn btn-ghost lg:text-3xl text-xl lg:pb-0 pb-1 font-bold">
-          My Blogs
+          SS Mahim
         </a>
       </div>
       <div className="navbar-end">
@@ -69,14 +69,14 @@ const NavbarClient = ({ isAuthenticated, user }) => {
           {!isAuthenticated ? (
             <div className="flex gap-2 items-center">
               <LoginLink
-                postLoginRedirectURL="/"
+                postLoginRedirectURL="/profile"
                 className="btn bg-emerald-500 border-none text-white font-bold btn-sm px-6"
               >
                 Login
               </LoginLink>
 
               <RegisterLink
-                postLoginRedirectURL="/"
+                postLoginRedirectURL="/profile"
                 className="btn bg-teal-600 border-none text-white font-bold btn-sm px-6"
               >
                 Register
@@ -91,9 +91,7 @@ const NavbarClient = ({ isAuthenticated, user }) => {
                 referrerPolicy="no-referrer"
               />
 
-              <LogoutLink
-                className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6"
-              >
+              <LogoutLink className="btn btn-sm bg-rose-500 border-none text-white font-bold px-6">
                 Log Out
               </LogoutLink>
             </div>
