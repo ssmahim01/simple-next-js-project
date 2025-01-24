@@ -6,7 +6,7 @@ import Login from "@/app/login/page";
 import Register from "@/app/register/page";
 import Logout from "@/app/logout/page";
 
-const NavbarClient = ({ isAuthenticated, user }) => {
+const NavbarClient = ({ user }) => {
   // console.log(user.picture);
 
   // const issuerUrl = process.env.KINDE_ISSUER_URL;
@@ -21,7 +21,7 @@ const NavbarClient = ({ isAuthenticated, user }) => {
       </Link>
       <Link
         className="border border-gray-300 hover:bg-neutral hover:text-white rounded-md px-3 py-1 flex gap-2 items-center"
-        href={isAuthenticated ? "/profile" : "/login"}
+        href={user ? "/profile" : "/api/auth/login"}
       >
         <BsPersonCircle className="text-xl" /> <span>Profile</span>
       </Link>
@@ -66,7 +66,7 @@ const NavbarClient = ({ isAuthenticated, user }) => {
           </ul>
         </div>
         <div className="flex gap-3 items-center">
-          {!isAuthenticated ? (
+          {!user ? (
             <div className="flex gap-2 items-center">
              <Login />
              
